@@ -1,0 +1,10 @@
+add_library(
+    noise
+    noise.c
+    noise.h
+    )
+add_library(
+    stack
+    stack.c
+    stack.h
+    )
