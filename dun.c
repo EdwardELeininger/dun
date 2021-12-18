@@ -5,6 +5,7 @@
 #include <math.h>
 #include "src/tools/noise.h"
 #include "src/config.h"
+#include "src/combat_stats.h"
 
 unsigned char seed[SEEDSIZE];
 
@@ -30,6 +31,7 @@ int handleCmdArgs(int argc, char** argv, char *rawseed)
 int loadAndInit()
 {
     printf("loading...\n");
+    return 0;
 }
 
 int main(int argc, char** argv)
@@ -38,5 +40,12 @@ int main(int argc, char** argv)
     handleCmdArgs(argc, argv, rawseed);
     initSeed(rawseed);
     loadAndInit();
+    int doGameLoop = 1;
+    unsigned long time = 0;
+    while(doGameLoop)
+    {
+        
+
+    }
     return 0;
 }
