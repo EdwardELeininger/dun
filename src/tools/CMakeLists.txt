@@ -8,3 +8,8 @@ add_library(
     stack.c
     stack.h
     )
+add_library(
+    clitools
+    clitools.c
+    clitools.h
+    )

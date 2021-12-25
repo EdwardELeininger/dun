@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ncurses.h>
 #include <math.h>
+#include "src/tools/clitools.h"
 #include "src/tools/noise.h"
 #include "src/config.h"
 #include "src/combat_stats.h"
@@ -13,12 +14,8 @@ int handleCmdArgs(int argc, char** argv, char *rawseed)
 {
     if(argc <2)
     {
-        char buf[RAWSEEDMAX];
         printf("type a seed\n");
-        if (fgets(buf, sizeof buf, stdin)) {
-            buf[strcspn(buf, "\n")] = '\0';
-            strncpy(rawseed, buf, RAWSEEDMAX);
-        }
+        getstring(rawseed, RAWSEEDMAX);
     }
     else
     {
@@ -41,11 +38,37 @@ int main(int argc, char** argv)
     initSeed(rawseed);
     loadAndInit();
     int doGameLoop = 1;
-    unsigned long time = 0;
+    static int time;
+    char controller = 'z';
     while(doGameLoop)
     {
-        
+/*
+ * oof, what am I doing here...
+ * okay,
+ * server side keeps track of everything
+ * can the server spawn the client? do I want it to?
+ * maybe for single player/testing?
+ *
+ * i guess first is to create some socks, eh?
+ *
+ * then we'll set up the game world, and start taking clients...
+ * not going to worry about threads yet.
+ *
+ *
+ */
+        time += 1;
+        if(!feof(stdin))
+        {
+            getstring(&controller, 1);
+            if(controller != 'z')
+            {
+                printf("echo: %c\n", controller);
+                if(controller == 'q') doGameLoop = 0;
+                controller = 'z';
+            }
+        }
 
     }
+    printf("time: %d\n", time);
     return 0;
 }
