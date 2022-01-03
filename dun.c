@@ -7,6 +7,7 @@
 #include "src/tools/noise.h"
 #include "src/config.h"
 #include "src/combat_stats.h"
+#include "src/tools/webui.h"
 
 unsigned char seed[SEEDSIZE];
 
@@ -40,8 +41,10 @@ int main(int argc, char** argv)
     int doGameLoop = 1;
     static int time;
     char controller = 'z';
+    assert(webui_init()==0);
     while(doGameLoop)
     {
+        webui_handle();
 /*
  * oof, what am I doing here...
  * okay,

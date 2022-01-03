@@ -13,3 +13,8 @@ add_library(
     clitools.c
     clitools.h
     )
+add_library(
+    webui
+    webui.c
+    webui.h
+    )

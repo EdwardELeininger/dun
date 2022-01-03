@@ -13,4 +13,5 @@ target_link_libraries(dun PRIVATE noise)
 target_link_libraries(dun PRIVATE stack)
 target_link_libraries(dun PRIVATE entities)
 target_link_libraries(dun PRIVATE clitools)
+target_link_libraries(dun PRIVATE webui)
 
